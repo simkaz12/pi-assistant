@@ -1,0 +1,15 @@
+[Unit]
+Description=Home Reverb websocket server
+After=network.target redis-server.service
+
+[Service]
+Type=simple
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/admin-app
+ExecStart=/usr/bin/php8.4 artisan reverb:start --host=127.0.0.1 --port=6001
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

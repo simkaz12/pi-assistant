@@ -1,0 +1,30 @@
+mcp_servers:
+  system:
+    url: https://home.example.com/mcp/system
+    connect_timeout: 30.0
+    headers:
+      Authorization: Bearer ${MCP_SYSTEM_API_KEY}
+    tools:
+      include: [system_status, system_problems, system_events]
+    enabled: true
+  oura:
+    url: https://home.example.com/mcp/oura
+    connect_timeout: 30.0
+    headers:
+      Authorization: Bearer ${MCP_OURA_API_KEY}
+    enabled: true
+  training-nutrition:
+    url: https://home.example.com/mcp/training-nutrition
+    connect_timeout: 30.0
+    headers:
+      Authorization: Bearer ${MCP_TRAINING_NUTRITION_API_KEY}
+    enabled: true
+  tabularium:
+    url: http://10.8.0.1:8787/mcp
+    enabled: true
+
+cron:
+  wrap_response: false
+
+network:
+  force_ipv4: true

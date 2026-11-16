@@ -1,0 +1,26 @@
+[DEFAULT]
+ignoreip = 127.0.0.0/8 ::1 10.8.0.0/24 192.168.1.0/24
+bantime = 1h
+findtime = 10m
+maxretry = 5
+banaction = ufw
+
+[sshd]
+enabled = true
+backend = systemd
+journalmatch = _SYSTEMD_UNIT=ssh.service + _COMM=sshd
+
+[nginx-botsearch]
+enabled = true
+action = ufw[application="Nginx Full"]
+logpath = /var/log/nginx/access.log
+
+[nginx-4xx-burst]
+enabled = true
+action = ufw[application="Nginx Full"]
+filter = nginx-4xx-burst
+port = http,https
+logpath = /var/log/nginx/access.log
+maxretry = 20
+findtime = 5m
+bantime = 6h

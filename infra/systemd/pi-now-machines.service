@@ -1,0 +1,15 @@
+[Unit]
+Description=Home machines feed (Pi and PC stats)
+After=network.target redis-server.service pi-reverb.service
+
+[Service]
+Type=simple
+User=pi
+Group=www-data
+WorkingDirectory=/home/pi/admin-app
+ExecStart=/usr/bin/php8.4 artisan now:watch --feed=machines
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

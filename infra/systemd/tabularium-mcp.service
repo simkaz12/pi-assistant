@@ -1,0 +1,21 @@
+[Unit]
+Description=Tabularium memory MCP server
+After=network-online.target
+RequiresMountsFor=/mnt/media
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/tabularium
+Environment=TABULARIUM_MCP_TRANSPORT=http
+Environment=TABULARIUM_MCP_HOST=10.8.0.1
+Environment=TABULARIUM_MCP_PORT=8787
+Environment=TABULARIUM_STORE_PATH=/mnt/media/apps/tabularium-store
+Environment=TABULARIUM_ENABLE_CLEANER=true
+ExecStart=/home/pi/tabularium/.venv/bin/tabularium-mcp
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
