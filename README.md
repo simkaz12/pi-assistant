@@ -4,6 +4,10 @@ This repo is a sanitized copy of how my home server is built: a Raspberry Pi 5 t
 
 It is meant to show how the pieces fit: the network layout, the hardening, and the MCP servers an agent calls to read wellbeing, training and system data. It is not a turnkey installer, and it has not been run in this sanitized form.
 
+## Related project
+
+The Hermes configuration here connects to [Tabularium's v1 MCP server](https://github.com/simkaz12/tabularium) for memory. Tabularium's README also covers v2, which integrates with my [T3 Code fork](https://github.com/simkaz12/t3code).
+
 ## Architecture
 
 ```mermaid
@@ -163,3 +167,4 @@ The PHP code is lifted from the Laravel app and will not run without it (models,
 ## Left out on purpose
 
 Migrations, frontend, tests for the PHP code, the app's other modules, and any data. Real hostnames, addresses, peer lists, tokens and account identifiers are replaced or absent.
+
